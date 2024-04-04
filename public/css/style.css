@@ -1,0 +1,69 @@
+/* box model hacks */
+* {
+  box-sizing: border-box;
+}
+html {
+  background: rgb(242, 232, 207);
+}
+
+/* body formatting */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.todos-page {
+  flex-direction: row;
+}
+
+/* column formatting on todos page */
+#middle-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100vh;
+  border: solid black;
+}
+#right-column {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10vh;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  height: 100vh;
+  border: solid black;
+}
+#left-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  height: 100vh;
+  border: solid black;
+}
+
+/* generic styling */
+h1 {
+  color: red;
+  width: 20vw;
+  text-align: center;
+  font-size: 3rem;
+}
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+.not {
+  text-decoration: underline;
+}
+h3 {
+  width: 75%;
+}
