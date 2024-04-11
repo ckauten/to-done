@@ -15,16 +15,7 @@
     <!-- THIS IS WHERE OUTPUT FROM CHAT WILL GO -->
     <section id="left-column">
         <h2>Assistance</h2>
-        <h3 id="output">
-            <ul>
-                <% todos.forEach( el => { %>
-                    <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                        <span class='del'> Delete </span>
-                    </li>
-                    <% }) %>    
-                </ul>
-        </h3>
+        <h3 id="output"></h3>
     </section>
 
 
@@ -45,7 +36,7 @@
             
             <form action="/todos/createTodo" method='POST'>
                 <input id="textarea" placeholder="Enter Todo Item" name='todoItem'>
-                <input id="submit" type="submit">
+                <button id="submit">Submit</button>
             </form>
             <a href="/logout">Logout</a>
         </section>

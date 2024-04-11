@@ -21,29 +21,29 @@ Array.from(todoComplete).forEach((el) => {
 });
 
 //AI FETCH FUNCTION
-document.querySelector('#submit').addEventListener('click', async function sendAiReq() {
-  //event listener and function combined into one line
-  const prompt = document.querySelector('#textarea').value;
-  //prompt variable created using what was inside the text area
-  const response = await fetch('todos/generateText', {
-    //makes a fetch request to the todos controller which fires the generateText function
-    method: 'post',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify({ prompt: prompt }),
-  });
+if (new URLSearchParams(window.location.search).has('aiRequest')) {
+  sendAiReq(); // Assuming sendAiReq is the function that makes the fetch call to your `sendAiReq` server method
+}
 
-  if (response.ok) {
-    const data = await response.json();
-    const genRes = data.text;
-    //variable created from response (genRes = Generated response)
-    document.getElementById('output').textContent = genRes;
-    //renders what was in the response into the output field
-    console.log(genRes);
-    //console logs the data
-  } else {
-    console.error(`"Error from server"`);
+async function sendAiReq() {
+  try {
+    const response = await fetch('todos/generateText', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      // If your request doesn't need a body, you can omit this part
+      // body: JSON.stringify({ key: 'value' }), // Example body
+    });
+
+    const data = await response.json(); // Parsing the JSON response body
+    console.log(data.response); // Accessing the 'response' field
+    let formattedResponse = data.response.replace(/\n/g, '<br>');
+
+    // Use innerHTML to interpret the <br> as HTML line breaks
+    document.getElementById('output').innerHTML = formattedResponse; // Properly setting the text content
+  } catch (error) {
+    console.error('Error:', error);
   }
-});
+}
 
 async function deleteTodo() {
   const todoId = this.parentNode.dataset.id;

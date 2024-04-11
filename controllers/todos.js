@@ -2,7 +2,7 @@ const Todo = require('../models/Todo');
 
 module.exports = {
   getTodos: async (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     try {
       const todoItems = await Todo.find({ userId: req.user.id });
       //creates variable for the items in the todo matching the userId
@@ -10,6 +10,7 @@ module.exports = {
       //counts the items in the db and assigns the number to a variable
       res.render('todos.ejs', { todos: todoItems, left: itemsLeft, user: req.user });
       //renders out the todoItems variable (containing the items) as well as the amount of items left to do (contained in the itemsLeft variable)
+      // sendAiReq();
     } catch (err) {
       console.log(err);
       //catches any errors
@@ -21,7 +22,7 @@ module.exports = {
       //creates an item in the db with containing the item (pulled from the body), the completed property (boolean) and the userId attached
       console.log('Todo has been added!');
       //console logs it
-      res.redirect('/todos');
+      res.redirect('/todos?aiRequest=true');
       //redirects to /todos, which makes a get request to pull the new todo, and reloads
     } catch (err) {
       console.log(err);
