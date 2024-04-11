@@ -8,10 +8,27 @@
     <title>Document</title>
 </head>
 <body class="body todos-page">
+
+
     <!-- left column -->
+
+    <!-- THIS IS WHERE OUTPUT FROM CHAT WILL GO -->
     <section id="left-column">
-        test
+        <h2>Assistance</h2>
+        <h3 id="output">
+            <ul>
+                <% todos.forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        <span class='del'> Delete </span>
+                    </li>
+                    <% }) %>    
+                </ul>
+        </h3>
     </section>
+
+
+
     <!-- middle column -->
     <section id="middle-column">
         <h1>Todos</h1>
