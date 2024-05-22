@@ -22,7 +22,7 @@ Array.from(todoComplete).forEach((el) => {
 
 //AI FETCH FUNCTION
 if (new URLSearchParams(window.location.search).has('aiRequest')) {
-  sendAiReq(); // Assuming sendAiReq is the function that makes the fetch call to your `sendAiReq` server method
+  sendAiReq();
 }
 
 async function sendAiReq() {
